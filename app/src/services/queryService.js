@@ -5,12 +5,14 @@ const config = require('config');
 const elasticsearch = require('elasticsearch');
 const json2csv = require('json2csv');
 const fs = require('fs');
+const turfBuffer = require('turf-buffer');
 
 var Terraformer = require('terraformer-wkt-parser');
 const csvSerializer = require('serializers/csvSerializer');
 const DeleteSerializer = require('serializers/deleteSerializer');
 const OBTAIN_GEOJSON = /[.]*st_geomfromgeojson*\( *['|"]([^\)]*)['|"] *\)/g;
 const CONTAIN_INTERSEC = /[.]*([and | or]*st_intersects.*)\)/g;
+const CONTAIN_STBUFFER = /[.]*(stbuffer[^\)]*[\)]{1}[^\)]*)/g;
 
 const IndexNotFound = require('errors/indexNotFound');
 
@@ -288,11 +290,28 @@ class QueryService {
             } else if(resultIntersec.startsWith('or')) {
                 intersectResult += ' OR ';
             }
-            let geojson = OBTAIN_GEOJSON.exec(sqlLower);
-            if (geojson && geojson.length > 1){
-                geojson = this.convert2GeoJSON(JSON.parse(geojson[1]));
-                let wkt = Terraformer.convert(geojson);
-                intersectResult += ` GEO_INTERSECTS(the_geom, "${wkt}")`;
+            let geojsonExp = OBTAIN_GEOJSON.exec(sqlLower);
+            if (geojsonExp && geojsonExp.length > 1){
+                let geojson = this.convert2GeoJSON(JSON.parse(geojsonExp[1].replace(/\\/g, '')));                
+                
+                if (CONTAIN_STBUFFER.test(sqlLower)) {
+                    logger.debug('Entra qui');
+                    CONTAIN_STBUFFER.lastIndex = 0;
+                    let buffer = CONTAIN_STBUFFER.exec(sqlLower)[0];
+                    logger.debug('buffer', buffer);
+                    logger.debug('geojson[0]', geojsonExp[0]);
+                    let meters = buffer.replace(geojsonExp[0], '').replace(/,| |(stbuffer[ ]*\()/g, '');
+                    logger.debug('meters', meters);
+                    const feature = turfBuffer(geojson, +meters, 'meters');
+                    logger.debug('geojson', feature);
+                    let wkt = Terraformer.convert(feature.geometry);
+                    intersectResult = ` GEO_INTERSECTS(the_geom, "${wkt}")`;
+                } else {
+                    let wkt = Terraformer.convert(geojson);
+                    intersectResult += ` GEO_INTERSECTS(the_geom, "${wkt}")`;
+                }
+
+                
             }
             
             const result = `${sql.substring(0, pos)} ${intersectResult} ${sql.substring(pos + resultIntersec.length, sql.length)}`.trim();
