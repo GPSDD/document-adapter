@@ -14,7 +14,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: {name}
-        image: vizzuality/{name}
+        image: apihighways/{name}
         imagePullPolicy: Always
         resources:
           requests:
