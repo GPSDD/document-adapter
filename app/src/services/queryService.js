@@ -157,7 +157,9 @@ class Scroll {
         }
         *
         continue () {
-
+            logger.debug('CSV Result Scroll');
+            logger.debug(this.resultScroll);
+    
             if (this.resultScroll[0].aggregations) {
                 const data = csvSerializer.serialize(this.resultScroll, this.parsed, this.datasetId, this.format);
                 this.stream.write(this.convertDataToDownload(data, this.format, true, false, this.cloneUrl), {
