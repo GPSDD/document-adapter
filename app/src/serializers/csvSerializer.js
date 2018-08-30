@@ -66,9 +66,6 @@ class CSVSerializer {
     }
 
     static serialize(data, parsed, id, format = 'json') {
-        logger.debug('CSV Serializer Data');
-        logger.debug(data);
-
         if (data && data.length > 0) {
 
             if (data[0].aggregations) {

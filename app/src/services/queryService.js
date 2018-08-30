@@ -111,8 +111,6 @@ class Scroll {
     convertDataToDownload(data, type, first, more, cloneUrl) {
 
             if (type === 'csv') {
-                logger.debug('csv data');
-                logger.debug(data);
                 let json = json2csv({
                     data: data ? data.data : [],
                     hasCSVColumnTitle: first
