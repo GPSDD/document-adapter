@@ -111,8 +111,8 @@ class Scroll {
     convertDataToDownload(data, type, first, more, cloneUrl) {
 
             if (type === 'csv') {
-                logger.debug('CSV Data');
-                logger.debug(data.data);
+                logger.debug('csv data');
+                logger.debug(data);
                 let json = json2csv({
                     data: data ? data.data : [],
                     hasCSVColumnTitle: first
@@ -157,8 +157,6 @@ class Scroll {
         }
         *
         continue () {
-            logger.debug('CSV Result Scroll');
-            logger.debug(this.resultScroll);
     
             if (this.resultScroll[0].aggregations) {
                 const data = csvSerializer.serialize(this.resultScroll, this.parsed, this.datasetId, this.format);
@@ -167,7 +165,7 @@ class Scroll {
                 });
             } else {
                 this.first = true;
-                while (!this.timeout && this.resultScroll[0].hits && this.resultScroll[0].hits && this.resultScroll[0].hits.hits.length > 0 && (this.total < this.limit || this.limit === -1)) {
+                while (!this.timeout && this.resultScroll[0].hits && this.resultScroll[0].hits.hits && this.resultScroll[0].hits.hits.length > 0 && (this.total < this.limit || this.limit === -1)) {
                     logger.debug('Writting data');
                     let more = false;
                     const data = csvSerializer.serialize(this.resultScroll, this.parsed, this.datasetId, this.format);
