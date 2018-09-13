@@ -109,6 +109,9 @@ const containApps = function (apps1, apps2) {
     if (!apps1 || !apps2) {
         return false;
     }
+    //admin user for data4sdgs
+    if(apps2 === 'data4sdgs')
+        return true;
     for (let i = 0, length = apps1.length; i < length; i++)  {
         for (let j = 0, length2 = apps2.length; j < length2; j++) {
             if (apps1[i] === apps2[j]) {
