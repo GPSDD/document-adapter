@@ -110,7 +110,7 @@ const containApps = function (apps1, apps2) {
         return false;
     }
     //admin user for data4sdgs
-    if(apps2 === 'data4sdgs')
+    if(apps2.indexOf('data4sdgs') > -1)
         return true;
     for (let i = 0, length = apps1.length; i < length; i++)  {
         for (let j = 0, length2 = apps2.length; j < length2; j++) {
