@@ -120,6 +120,9 @@ const containApps = function (apps1, apps2) {
 };
 
 const checkUserHasPermission = function (user, dataset) {
+    console.log('user', user)
+    console.log('dataset')
+    console.log(dataset)
     if (user && dataset) {
         if (user.id === 'microservice') {
             return true;
