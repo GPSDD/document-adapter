@@ -1,0 +1,62 @@
+Running Start
+
+> rw-adapter-document@1.1.2 start /opt/rw-adapter-document
+> NODE_PATH=app/src node app/index.js
+
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Loading routes...","time":"2018-09-13T14:08:02.735Z","src":{"file":"/opt/rw-adapter-document/app/src/loader.js","line":50,"func":"loadRoutes"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Loading route /opt/rw-adapter-document/app/src/routes/api/v1/datasetRouter.js, in path /api/v1","time":"2018-09-13T14:08:02.738Z","src":{"file":"/opt/rw-adapter-document/app/src/loader.js","line":23},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Connecting to queue DOC-TASKS","time":"2018-09-13T14:08:02.785Z","src":{"file":"/opt/rw-adapter-document/app/src/services/queueService.js","line":10,"func":"QueueService"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Loading route /opt/rw-adapter-document/app/src/routes/api/v1/queryRouter.js, in path /api/v1","time":"2018-09-13T14:08:02.905Z","src":{"file":"/opt/rw-adapter-document/app/src/loader.js","line":23},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":30,"msg":"Connecting with elasticsearch","time":"2018-09-13T14:08:03.176Z","src":{"file":"/opt/rw-adapter-document/app/src/services/queryService.js","line":210,"func":"QueryService"},"v":0}
+Elasticsearch INFO: 2018-09-13T14:08:03Z
+  Adding connection to http://elasticsearch-v2.default.svc.cluster.local:9200/
+
+Elasticsearch INFO: 2018-09-13T14:08:03Z
+  Adding connection to http://elasticsearch-v2.default.svc.cluster.local:9200/
+
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Loaded routes correctly!","time":"2018-09-13T14:08:03.193Z","src":{"file":"/opt/rw-adapter-document/app/src/loader.js","line":52,"func":"loadRoutes"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":30,"msg":"Server started in port:4000","time":"2018-09-13T14:08:03.195Z","src":{"file":"/opt/rw-adapter-document/app/src/app.js","line":72},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":30,"msg":"Initializing register microservice","time":"2018-09-13T14:08:03.197Z","src":{"file":"/opt/rw-adapter-document/node_modules/ct-register-microservice-node/lib/main.js","line":61,"func":"Promise"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Checking mode","time":"2018-09-13T14:08:03.197Z","src":{"file":"/opt/rw-adapter-document/node_modules/ct-register-microservice-node/lib/main.js","line":80,"func":"Promise"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Connected","time":"2018-09-13T14:08:03.274Z","src":{"file":"/opt/rw-adapter-document/app/src/services/queueService.js","line":13,"func":"QueueService.init.then"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":30,"msg":"Obtaining info to register microservice","time":"2018-09-13T14:08:03.440Z","src":{"file":"/opt/rw-adapter-document/node_modules/ct-register-microservice-node/lib/main.js","line":25,"func":"registerKoa1"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Register microservice complete succesfully!","time":"2018-09-13T14:08:03.623Z","src":{"file":"/opt/rw-adapter-document/node_modules/ct-register-microservice-node/lib/main.js","line":92,"func":"promise.then"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":30,"msg":"Obtaining info to register microservice","time":"2018-09-13T14:08:04.119Z","src":{"file":"/opt/rw-adapter-document/node_modules/ct-register-microservice-node/lib/main.js","line":25,"func":"registerKoa1"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Body { connectorUrl: 'http://apps.who.int/gho/athena/api/GHO/MDG_0000000003.csv?filter=COUNTRY:YEM&profile=verbose',\n  application: [ 'data4sdgs' ],\n  dataset: \n   { data: \n      { id: 'f8ac4f31-b2ec-4af2-bf52-06f677725648',\n        type: 'dataset',\n        attributes: [Object] } },\n  loggedUser: \n   { id: '5b71cdd3a60e1d57ff5e74aa',\n     role: 'ADMIN',\n     provider: 'local',\n     email: 'apihighways@data4sdgs.org',\n     extraUserData: { apps: [Object] },\n     createdAt: 1535573065744,\n     iat: 1535573065 } }","time":"2018-09-13T14:10:13.733Z","src":{"file":"/opt/rw-adapter-document/app/src/routes/api/v1/datasetRouter.js","line":163,"func":"deserializeDataset"},"v":0}
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":20,"msg":"Checking if the user has permissions","time":"2018-09-13T14:10:13.742Z","src":{"file":"/opt/rw-adapter-document/app/src/routes/api/v1/datasetRouter.js","line":145,"func":"checkPermissionModify"},"v":0}
+user { id: '5b71cdd3a60e1d57ff5e74aa',
+  role: 'ADMIN',
+  provider: 'local',
+  email: 'apihighways@data4sdgs.org',
+  extraUserData: { apps: [ 'data4sdgs' ] },
+  createdAt: 1535573065744,
+  iat: 1535573065 }
+dataset
+{ name: 'Yemen - Health Indicators',
+  slug: 'Yemen-Health-Indicators',
+  type: null,
+  dataPath: null,
+  attributesPath: null,
+  connectorType: 'document',
+  provider: 'csv',
+  userId: '5b71cdd3a60e1d57ff5e74aa',
+  connectorUrl: 'http://apps.who.int/gho/athena/api/GHO/MDG_0000000001.csv?filter=COUNTRY:YEM&profile=verbose',
+  tableName: 'index_f8ac4f31b2ec4af2bf5206f677725648_1536769959336',
+  status: 'saved',
+  published: false,
+  sandbox: false,
+  overwrite: false,
+  verified: false,
+  blockchain: {},
+  subscribable: {},
+  env: 'production',
+  geoInfo: false,
+  protected: false,
+  legend: { date: [], region: [], country: [], nested: [] },
+  clonedHost: {},
+  errorMessage: '',
+  taskId: '/v1/doc-importer/task/60534a20-8ef7-4df3-9eb2-ee8862839c0d',
+  createdAt: '2018-09-12T16:32:39.222Z',
+  updatedAt: '2018-09-12T16:32:52.252Z',
+  id: 'f8ac4f31-b2ec-4af2-bf52-06f677725648' }
+{"name":"rw-adapter-document","hostname":"document-sdgs-645599fbb7-kgkp7","pid":17,"level":50,"err":{"message":"Not authorized","name":"ForbiddenError","stack":"ForbiddenError: Not authorized\n    at Object.throw (/opt/rw-adapter-document/node_modules/koa/lib/context.js:91:23)\n    at Object.checkPermissionModify (/opt/rw-adapter-document/app/src/routes/api/v1/datasetRouter.js:157:19)\n    at checkPermissionModify.next (<anonymous>)\n    at onFulfilled (/opt/rw-adapter-document/node_modules/co/index.js:65:19)\n    at /opt/rw-adapter-document/node_modules/co/index.js:54:5\n    at Object.co (/opt/rw-adapter-document/node_modules/co/index.js:50:10)\n    at Object.toPromise (/opt/rw-adapter-document/node_modules/co/index.js:118:63)\n    at next (/opt/rw-adapter-document/node_modules/co/index.js:99:29)\n    at onFulfilled (/opt/rw-adapter-document/node_modules/co/index.js:69:7)"},"msg":"Not authorized","time":"2018-09-13T14:10:13.745Z","src":{"file":"/opt/rw-adapter-document/app/src/app.js","line":32},"v":0}
